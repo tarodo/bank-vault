@@ -30,6 +30,9 @@ class Visit(models.Model):
     def format_duration(self) -> str:
         return f'{str(self.get_duration()).split(".")[0]}'
 
+    def is_visit_long(self, minutes=60):
+        return self.get_duration().total_seconds() >= minutes*60
+
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
             user=self.passcard.owner_name,
