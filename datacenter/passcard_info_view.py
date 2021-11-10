@@ -1,19 +1,21 @@
+from typing import List
+
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
 
 
 def passcard_info_view(request, passcode):
-    passcard = Passcard.objects.all()[0]
-    # Программируем здесь
-
-    this_passcard_visits = [
-        {
-            'entered_at': '11-04-2018',
-            'duration': '25:03',
+    passcard: Passcard = Passcard.objects.get(passcode=passcode)
+    visits: List[Visit] = passcard.visit_set.all()
+    this_passcard_visits = []
+    for visit in visits:
+        this_passcard_visits.append({
+            'entered_at': visit.entered_at,
+            'duration': visit.format_duration(),
             'is_strange': False
-        },
-    ]
+        })
+
     context = {
         'passcard': passcard,
         'this_passcard_visits': this_passcard_visits

@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import timedelta
+from django.utils.timezone import localtime
 
 
 class Passcard(models.Model):
@@ -18,6 +20,15 @@ class Visit(models.Model):
     passcard = models.ForeignKey(Passcard)
     entered_at = models.DateTimeField()
     leaved_at = models.DateTimeField(null=True)
+
+    def get_duration(self) -> timedelta:
+        leave_time = localtime()
+        if self.leaved_at:
+            leave_time = localtime(self.leaved_at)
+        return leave_time - localtime(self.entered_at)
+
+    def format_duration(self) -> str:
+        return f'{str(self.get_duration()).split(".")[0]}'
 
     def __str__(self):
         return '{user} entered at {entered} {leaved}'.format(
