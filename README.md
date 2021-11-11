@@ -18,13 +18,15 @@ Create `.env` from `.env.Example`
 
     More info on [DJ-Database-URL](https://github.com/jacobian/dj-database-url)
 1. DEBUG - bool, setting for Django mode
-1. SECRET_KEY - str, any secret key.
-   You can use `secrets`:
+1. SECRET_KEY - str, any secret key. You can use `secrets`:
    ```
    >>> import secrets
    >>> secrets.token_hex(16)
    '468e7bf2e532406d9a58e01eacb08720'
    ```
+1. ALLOWED_HOSTS - list of host separated by a comma.
+   
+   Example: `ALLOWED_HOSTS=127.0.0.1,localhost`
 
 ## Start
 ```
