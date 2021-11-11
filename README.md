@@ -10,7 +10,21 @@ Python3 should be already installed. Then use pip (or pip3, if there is a confli
 ```
 pip install -r requirements.txt
 ```
-1. Create `.env` from `.env.Example`
+## Env Settings
+Create `.env` from `.env.Example`
+1. DB_URL - str, variable to configure your Django application by `DJ-Database-URL`
+   
+    use template: `postgres://USER:PASSWORD@HOST:PORT/NAME` for default postgres
+
+    More info on [DJ-Database-URL](https://github.com/jacobian/dj-database-url)
+1. DEBUG - bool, setting for Django mode
+1. SECRET_KEY - str, any secret key.
+   You can use `secrets`:
+   ```
+   >>> import secrets
+   >>> secrets.token_hex(16)
+   '468e7bf2e532406d9a58e01eacb08720'
+   ```
 
 ## Start
 ```
