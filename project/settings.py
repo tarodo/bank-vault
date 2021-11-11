@@ -10,7 +10,7 @@ DATABASES = {'default': dj_database_url.config()}
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = env.str('SECRET_KEY', False)
+SECRET_KEY = env.str('SECRET_KEY')
 
 DEBUG = env.bool('DEBUG', False)
 
