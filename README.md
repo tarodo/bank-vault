@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 ## Env Settings
 Create `.env` from `.env.Example`
-1. DB_URL - str, variable to configure your Django application by `DJ-Database-URL`
+1. DATABASE_URL - str, variable to configure your Django application by `DJ-Database-URL`
    
     use template: `postgres://USER:PASSWORD@HOST:PORT/NAME` for default postgres
 
